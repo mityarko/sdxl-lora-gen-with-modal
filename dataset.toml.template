@@ -1,0 +1,12 @@
+[general]
+caption_extension = '.txt'
+enable_bucket = true
+shuffle_caption = true
+
+[[datasets]]
+resolution = 1024
+batch_size = 2
+
+[[datasets.subsets]]
+image_dir = '/input'
+num_repeats = 5

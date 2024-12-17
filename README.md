@@ -49,7 +49,7 @@ modal volume put models <モデルファイル名> /
 作成結果を見ながら調整してみてください。
 
 5. トレーニングを開始する  
-`modal run generate_lora.py --name kiritan` と実行すると素材ファイルのアップロードと Lora のトレーニングが開始されます。  
+`modal run generate_lora.py --name kiritan` と実行すると素材ファイルのアップロードと LoRA のトレーニングが開始されます。  
 状況はコンソールと、Modal のサイトから確認できます。  
 問題がありそうだったら Modal の Logs から Stop Now で止めてください。
 トレーニングは A10G で 30 分ぐらいかかります。  
@@ -62,3 +62,8 @@ modal volume delete inputs
 modal volume delete outputs
 modal volume delete models
 ```
+
+## Tips
+- 他のデータセットで試したい場合、オプションの `--name` の名前と素材のディレクトリ名をあわせてください
+- GPU を変更したい場合は `generate_lora.py` の `GPU = "A10G"` のところを変更してください
+- 設定ファイルの書き方は [sd-script](https://github.com/kohya-ss/sd-scripts) 等を参照ください

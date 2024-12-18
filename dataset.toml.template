@@ -5,8 +5,8 @@ shuffle_caption = true
 
 [[datasets]]
 resolution = 1024
-batch_size = 2
+batch_size = 5
 
 [[datasets.subsets]]
 image_dir = '/input'
-num_repeats = 5
+num_repeats = 4

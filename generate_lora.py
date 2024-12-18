@@ -26,8 +26,8 @@ VOLUME_NAME_OUTPUT = "outputs"
 
 #==============================================================================
 app = modal.App(f"sdxl-lora-gen")
-model_volume = modal.Volume.from_name(VOLUME_NAME_MODEL)
 
+model_volume = modal.Volume.from_name(VOLUME_NAME_MODEL)
 input_volume = modal.Volume.from_name(VOLUME_NAME_INPUT, create_if_missing=True)
 output_volume = modal.Volume.from_name(VOLUME_NAME_OUTPUT, create_if_missing=True)
 
@@ -76,6 +76,8 @@ def generate(name: str):
     f"--config_file /input/config.toml "
     f"--output_name {name} ",
     shell=True)
+  global output_volume
+  output_volume.commit()
 
 @app.local_entrypoint()
 def main(name: str):
@@ -92,7 +94,8 @@ def main(name: str):
 
   generate.remote(name)
 
+  v = modal.Volume.from_name(VOLUME_NAME_OUTPUT)
   with open(f"{name}.safetensors", "wb") as f:
-    for chunk in output_volume.read_file(f"{name}.safetensors"):
+    for chunk in v.read_file(f"{name}.safetensors"):
       f.write(chunk)
    

@@ -1,12 +1,6 @@
-```markdown
+
 # Script for Creating SDXL LoRAs on Modal
 A sample script for creating LoRAs for SDXL using [Modal](https://modal.com/).
-
-## What is Modal?
-[Modal](https://modal.com/) is a cloud environment for executing arbitrary Python code. It is particularly well-suited for AI/ML workloads, offering affordable access to GPU resources.  
-The free tier provides $30 in monthly credits.
-
-Pricing is based on CPU, memory, and GPU usage time. Running an A10G instance for an hour costs just over $1 USD, making LoRA generation relatively accessible.
 
 ## Preparation
 Requires Python 3.10 or later.
@@ -65,4 +59,4 @@ modal volume delete models
 - Match `--name` parameter with your dataset directory name
 - Change GPU type by modifying `GPU = "A10G"` in `generate_lora.py`
 - For configuration details, see [sd-script documentation](https://github.com/kohya-ss/sd-scripts)
-```
+
